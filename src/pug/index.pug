@@ -1,0 +1,212 @@
+include includes/header.pug
+
+// section-intro
+section.section-intro.section.intro
+
+  div.intro__slide.slide
+    div.slide__img
+      img.img(src='/assets/img/slide-1.png' alt='intro')
+
+    h1.slide__title Technology process managament
+    p.slide__subtitle
+      | Simulation 仿真•Covers all aspects of ADAS development
+    p.slide__subtitle
+      | 覆盖ADAS开的各个方面•Analysis 分析•Fleet testing
+    div.slide__control
+
+  div.container
+
+    div.section__description
+      h2.section__title What is vicando?
+      p.section__excerpt
+        | Vicando is a suite of tools that covers the full cycle of Advanced
+        | driver-assistance systems development. From the first day of
+        | algorithm development.
+      a.section__link(href="") Read more.
+
+    div.intro__download.download
+      div.download__top-control
+        button.button.download__button.download-button--small
+          img.img(src='/assets/icons/download-small.png')
+
+      div.download__description
+        h2.download__title Download demo
+        p.download__excerpt
+          | Dear customer, thank you for your interest in our products.
+          | Please click on below icon for your operating system to download ViCANdo.
+          | We are constantly improving our products with new features, please stay tuned!
+
+      div.download__bottom-control
+        button.button.download__button.download-button--large Download free
+// /section-intro
+
+// section-about
+section.section.section-about.about
+
+  div.container
+    h2.section__title About Company
+
+    div.wrapper
+      div.about__litera
+        img.img(src='/assets/img/litera.png' alt='litera')
+
+      div.section__description
+        h2.section__subtitle Engineering excellence is our motto
+        p.section__excerpt
+          | Zuragon was founded by a team committed to a disruptive change of the
+          | way the industry works with development and test systems for
+          | Autonomuous Driving (AD) and Advanced driver assistance systems (ADAS).
+          | By introducing a consistent family of products reutilizing
+          | the power of multi-OS design, ADAS knowledge and open source computer vision
+          | technology, hand in hand with established standard technologies, Zuragon
+          | can offer a suite of products that assists in ADAS development from concept
+          | to code on the road.
+        a.about__link(href='') Contact.
+
+      div.about__controls
+        button.button.about__expand
+          img(src='/assets/icons/expand.png' alt='expand')
+// /section-about
+
+// section-news
+section.section.setion-news.news.news--half-img
+
+  div.container
+    div.news__article.article
+      div.article__thumbnail
+        img.img(src='/assets/img/article-1.jpg' alt='article thumbnail')
+
+      div.article__description.section__description
+        div.article__date-container
+          span.article__day 29
+          span.article__month oct
+
+        h2.section__title Latest <br/> news
+        h3.article__title
+          | Zuragon to exhibit at autonomous
+          | vehicle technology expo 2018 in novi,
+          | michigan.
+        p.article__excerpt
+          | Main features: – Fusion of Lidar signals into Video
+          | Windows – Birds Eye view on hits – Plot of distance
+          | and other target data into existing.
+        a.article__link(href='#') Read more.
+
+        div.news__controls
+          button.button.news__prev
+            img(src='/assets/icons/arrow-left.png' alt='previus news')
+
+          button.button.news__next
+            img(src='/assets/icons/arrow-right.png' alt='next news')
+// /section-news
+
+// section-knew-more
+section.section.section-knew-more.knew-more
+  div.container
+    h2.section__title Know more about vicando suite
+
+    div.feature
+      ul.feature__list
+        li.feature__item(data-active='0')
+          button.button Vincando
+        li.feature__item(data-active='1')
+          button.button Vicansim
+        li.feature__item(data-active='0')
+          button.button Vicanlog
+        li.feature__item(data-active='0')
+          button.button Vicandroid
+
+      div.feature__description(data-hidden='1')
+        h2.feature__title Vincando
+        p.feature__excerpt
+          | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+          | diam nonummy nibh euismod tincidunt ut laoreet dolore
+          | magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+        button.button.feature__more More info
+
+      div.feature__description(data-hidden='0')
+        h2.feature__title Vicansim
+        p.feature__excerpt
+          | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+          | diam nonummy nibh euismod tincidunt ut laoreet dolore
+          | magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+        button.button.feature__more More info
+
+      div.feature__description(data-hidden='1')
+        h2.feature__title Vicanlog
+        p.feature__excerpt
+          | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+          | diam nonummy nibh euismod tincidunt ut laoreet dolore
+          | magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+        button.button.feature__more More info
+
+      div.feature__description(data-hidden='1')
+        h2.feature__title Vincando
+        p.feature__excerpt
+          | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+          | diam nonummy nibh euismod tincidunt ut laoreet dolore
+          | magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+        button.button.feature__more More info
+// /section-knew-more
+
+// section-review
+section.section.section-review.review
+  div.container
+    ul.review__list
+      li.review__item
+        h2.review__title
+          | "We developed our own applications for
+          | diagnostics and EOL without any problems,
+          | after one day of training from Zuragon".
+        p.review__author
+          | Senior Manager at a European OEM, 25 years of experience in the Automotive Electronics
+// /section-review
+
+// section-partners
+section.section.section-partners.partners
+
+  div.container
+    h2.section__title Our partners
+    ul.partners__list
+      li.partners__item
+        div.partners__img-wrapper
+          img.partners__img(src='/assets/img/harman.png' alt='')
+        div.partners__description
+          h3.partners__title Harman
+          p.partners__excerpt Harman International Industries es una compañía estadounidense especializada en el diseño y mejora de la conectividad de vehículos.
+          a.partners__link(href='#') Read more.
+
+      li.partners__item
+        div.partners__img-wrapper
+          img.partners__img(src='/assets/img/logitech.png' alt='')
+        div.partners__description
+          h3.partners__title Logitech
+          p.partners__excerpt Harman International Industries es una compañía estadounidense especializada en el diseño y mejora de la conectividad de vehículos.
+          a.partners__link(href='#') Read more.
+
+      li.partners__item
+        div.partners__img-wrapper
+          img.partners__img(src='/assets/img/samsung.png' alt='')
+        div.partners__description
+          h3.partners__title Samsung
+          p.partners__excerpt Harman International Industries es una compañía estadounidense especializada en el diseño y mejora de la conectividad de vehículos.
+          a.partners__link(href='#') Read more.
+
+      li.partners__item
+        div.partners__img-wrapper
+          img.partners__img(src='/assets/img/solectrix.png' alt='')
+        div.partners__description
+          h3.partners__title Solectrix
+          p.partners__excerpt Harman International Industries es una compañía estadounidense especializada en el diseño y mejora de la conectividad de vehículos.
+          a.partners__link(href='#') Read more.
+
+      li.partners__item
+        div.partners__img-wrapper
+          img.partners__img(src='/assets/img/qualcomm.png' alt='')
+        div.partners__description
+          h3.partners__title Qualcomm
+          p.partners__excerpt Harman International Industries es una compañía estadounidense especializada en el diseño y mejora de la conectividad de vehículos.
+          a.partners__link(href='#') Read more.
+// /section-partners
+
+include includes/footer.pug
