@@ -1,0 +1,68 @@
+/* #region imports */
+// @import "_reset"
+/* #endregion */
+
+/* #region globals */
+$primary: #141448
+$secondary: #eb6856
+$text: #262626
+$text-accent: #fff
+$bg: #fff
+/* #endregion */
+
+/* #region globals */
+html
+	@media (min-width: 1280px)
+		// font-size: 1.2em;
+	@media (max-width: 1024px)
+		// font-size: 1em;
+	@media (max-width: 768px)
+		// font-size: .8em;
+
+html,
+body
+	height: 100%
+
+body
+	font-family: 'Open Sans'
+
+*
+	box-sizing: border-box
+/* #endregion */
+
+/* #region */
+.page.front
+	position: relative
+	height: 100vh
+
+.page-title
+	font-family: 'forum'
+	text-align: center
+	color: $text-accent
+
+.fullpage-bg
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: -2
+	&:after
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		content: ''
+		background-color: $primary
+		opacity: 0.6
+		z-index: -1
+
+.fullpage-bg .img
+	width: 100%
+	height: 100%
+	object-fit: cover
+/* #endregion */
+
+/* #region */
+/* #endregion */

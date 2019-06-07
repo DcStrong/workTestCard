@@ -24,7 +24,8 @@ let path = {
     let file = {
       js      : '**/*.js',
       less    : '**/*.less',
-      sass    : '**/*.scss',
+      scss    : '**/*.scss',
+      sass    : '**/*.sass',
       pug     : '**/*.pug',
       img     : '**/*.*',
       icons   : '**/*.*',
@@ -35,6 +36,7 @@ let path = {
       root    : root,
       js      : { dir: `${root}${dir.js}`,    file: `${root}${dir.js}${file.js}`         },
       less    : { dir: `${root}${dir.less}`,  file: `${root}${dir.less}${file.less}`     },
+      scss    : { dir: `${root}${dir.sass}`,  file: `${root}${dir.sass}${file.scss}`     },
       sass    : { dir: `${root}${dir.sass}`,  file: `${root}${dir.sass}${file.sass}`     },
       pug     : { dir: `${root}${dir.pug}`,   file: `${root}${dir.pug}${file.pug}`       },
       img     : { dir: `${root}${dir.img}`,   file: `${root}${dir.img}${file.img}`       },
@@ -105,7 +107,7 @@ let path = {
     return {
       bootstrap: {
         sass: {
-          file: 'node_modules/bootstrap/scss/bootstrap.scss'
+          file: 'node_modules/bootstrap/dist/css/bootstrap.min.css'
         },
         js: {
           file: 'node_modules/bootstrap/dist/js/bootstrap.min.js'
@@ -137,7 +139,7 @@ let tasks = {
 
   dist    : 'distribution',
 
-  refersh : 'refersh',
+  refresh : 'refresh',
 
   default : 'run'
 };
@@ -159,12 +161,12 @@ task(tasks.clean, done => {
 });
 
 task(tasks.init, done => {
-  // src(path.ext.bootstrap.sass.file).pipe(sass()).pipe(dest(path.dev.css.dir));
-  // src(path.ext.bootstrap.js.file).pipe(dest(path.dev.js.dir));
+  src(path.ext.bootstrap.sass.file).pipe(dest(path.dev.css.dir));
+  src(path.ext.bootstrap.js.file).pipe(dest(path.dev.js.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dev.js.dir));
 
-  // src(path.ext.bootstrap.sass.file).pipe(sass()).pipe(dest(path.dist.css.dir));
-  // src(path.ext.bootstrap.js.file).pipe(dest(path.dist.js.dir));
+  src(path.ext.bootstrap.sass.file).pipe(dest(path.dist.css.dir));
+  src(path.ext.bootstrap.js.file).pipe(dest(path.dist.js.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dist.js.dir));
   done();
 });
@@ -229,6 +231,7 @@ task(tasks.less, done => {
 
 task(tasks.sass, done => {
   src(path.src.sass.file).pipe(sass()).pipe(dest(path.dev.css.dir));
+  src(path.src.scss.file).pipe(sass()).pipe(dest(path.dev.css.dir));
   done();
 });
 
@@ -250,7 +253,7 @@ task(tasks.dist, done => {
   done();
 });
 
-task(tasks.refersh, series(
+task(tasks.refresh, series(
   tasks.clean,
   tasks.init,
   tasks.assets,
