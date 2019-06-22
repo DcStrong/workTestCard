@@ -1,10 +1,11 @@
 include includes/header.pug
 
 // section-intro
-div.page.front
 
-  div.fullpage-bg
-    img.img(src="../assets/img/front-bg.jpg", alt="Ubk-Rent")
+div.fullpage-bg
+  img.img(src="../assets/img/front-bg.jpg", alt="Ubk-Rent")
+
+div.page.front
 
   section.section.container
     h1.page-title
@@ -12,14 +13,14 @@ div.page.front
       br
       | премиум класса в Ялте
 
-  section.section.container
-    a(href='') Апартаменты
-    a(href='') Дома и виллы
+  section.section.container.button
+    a.nav_button(href='') Апартаменты
+    a.nav_button(href='') Дома и виллы
 
-  section.section.container
-    button(type='button' hidden)
-    button(type='button') Заказать индивидуальный подбор
-    button(type='button')
+  section.section.container.order
+    button.section-order(type='button' hidden)
+    button.section-order(type='button') Заказать индивидуальный подбор
+    button.section-order(type='button')
 
 // /section-intro
 

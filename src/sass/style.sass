@@ -12,6 +12,7 @@ $bg: #fff
 
 /* #region globals */
 html
+	font-size: 10px
 	@media (min-width: 1280px)
 		// font-size: 1.2em;
 	@media (max-width: 1024px)
@@ -31,14 +32,25 @@ body
 /* #endregion */
 
 /* #region */
+img.img
+	width: 19rem
+
 .page.front
 	position: relative
+	display: flex
+	justify-content: center
+	flex-direction: column
+	text-align: center
 	height: 100vh
+	width: 100%
 
 .page-title
 	font-family: 'forum'
 	text-align: center
+	text-transform: uppercase
 	color: $text-accent
+	letter-spacing: 0.3rem
+	margin-top: 26%
 
 .fullpage-bg
 	position: absolute
@@ -63,6 +75,40 @@ body
 	height: 100%
 	object-fit: cover
 /* #endregion */
+/*header-menu*/
+ul.menu
+    flex-direction: row
+    display: flex
+    justify-content: space-between
+    width: 100%
+    padding: 0
 
+li a
+  color: #ffffff
+	list-style: none
+	font-size: 1.6rem
+	&:hover
+		color: #eb6856
+/*header-menu*/
+/*wraper home*/
+
+a.nav_button
+    background-color: #eb6856
+    padding: 0.5rem 2.7rem 0.4rem
+    border-radius: 5px
+    color: #fff
+    font-size: 1rem
+
+.button
+	margin-top: 4%
+
+.order
+	margin-top: 13%
+
+.section.container.button
+	display: flex
+	justify-content: space-evenly
+	padding: 0 4rem
+/*wraper home*/
 /* #region */
 /* #endregion */
