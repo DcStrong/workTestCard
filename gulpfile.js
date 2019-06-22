@@ -6,6 +6,7 @@ const sass = require("gulp-sass");
 const babel = require('gulp-babel');
 const browserSync = require('browser-sync').create();
 const del = require('del'); // https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md
+const plumber = require('gulp-plumber');
 
 let path = {
   src: (() => { // исходники
@@ -225,23 +226,23 @@ task(tasks.img, done => {
 });
 
 task(tasks.less, done => {
-  src(path.src.less.file).pipe(less()).pipe(dest(path.dev.css.dir));
+  src(path.src.less.file).pipe(plumber()).pipe(less()).pipe(dest(path.dev.css.dir));
   done();
 });
 
 task(tasks.sass, done => {
-  src(path.src.sass.file).pipe(sass()).pipe(dest(path.dev.css.dir));
-  src(path.src.scss.file).pipe(sass()).pipe(dest(path.dev.css.dir));
+  src(path.src.sass.file).pipe(plumber()).pipe(sass()).pipe(dest(path.dev.css.dir));
+  src(path.src.scss.file).pipe(plumber()).pipe(sass()).pipe(dest(path.dev.css.dir));
   done();
 });
 
 task(tasks.pug, done => {
-  src(path.src.pug.file).pipe(pug()).pipe(dest(path.dev.html.dir));
+  src(path.src.pug.file).pipe(plumber()).pipe(pug()).pipe(dest(path.dev.html.dir));
   done();
 });
 
 task(tasks.babel, done => {
-  src(path.src.js.file).pipe(babel({ presets: ['@babel/env'] })).pipe(dest(path.dev.js.dir));
+  src(path.src.js.file).pipe(plumber()).pipe(babel({ presets: ['@babel/env'] })).pipe(dest(path.dev.js.dir));
   done();
 });
 
