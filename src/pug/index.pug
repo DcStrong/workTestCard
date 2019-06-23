@@ -2,8 +2,8 @@ include includes/header.pug
 
 // section-intro
 div.slider
-  button.prev
-  button.next
+  button.slider__control.prev(data-control="-1")
+  button.slider__control.next(data-control="1")
   div(data-simple-slider)
     .slider__slide
       img.slider__img(src="../assets/img/front-bg.jpg", alt="Ubk-Rent")
