@@ -32,25 +32,28 @@ body
 /* #endregion */
 
 /* #region */
+.logo
+  display: flex
+  justify-content: center
+
 img.img
 	width: 19rem
 
 .page.front
 	position: relative
 	display: flex
-	justify-content: center
 	flex-direction: column
 	text-align: center
-	height: 100vh
-	width: 100%
 
 .page-title
-	font-family: 'forum'
-	text-align: center
-	text-transform: uppercase
-	color: $text-accent
-	letter-spacing: 0.3rem
-	margin-top: 26%
+  font-family: 'forum'
+  text-align: center
+  text-transform: uppercase
+  color: $text-accent
+  letter-spacing: 0.3rem
+  margin-top: 14rem
+  margin-bottom: 0
+  font-size: 4.3rem
 
 .fullpage-bg
 	position: absolute
@@ -77,27 +80,48 @@ img.img
 /* #endregion */
 /*header-menu*/
 ul.menu
-    flex-direction: row
-    display: flex
-    justify-content: space-between
-    width: 100%
-    padding: 0
+  flex-direction: row
+  display: flex
+  justify-content: space-between
+  width: 100%
+  padding: 0
+  margin-bottom: 0
+  margin-top: 1rem
 
 li a
-  color: #ffffff
-	list-style: none
+  &:hover
+    color: $secondary
+  color: #fff
+  list-style: none
+  font-size: 1.6rem
+
+.header .container .phone
+  display: block
+  font-size: 1.8rem
+  color: #fff
+
+.callback
 	font-size: 1.6rem
-	&:hover
-		color: #eb6856
+	color: $secondary
+	text-decoration: underline
+
+.col-3
+	text-align: right
+	margin-top: 5.4rem
 /*header-menu*/
+
 /*wraper home*/
 
 a.nav_button
-    background-color: #eb6856
-    padding: 0.5rem 2.7rem 0.4rem
-    border-radius: 5px
-    color: #fff
-    font-size: 1rem
+  &:hover
+    background-color: $secondary
+  background-color: #eb6856e6
+  padding: 0.5rem 3.2rem
+  border-radius: 5px
+  color: #fff
+  font-size: 1.6rem
+  text-decoration: none
+  font-family: 'Gotham Pro'
 
 .button
 	margin-top: 4%
@@ -108,7 +132,6 @@ a.nav_button
 .section.container.button
 	display: flex
 	justify-content: space-evenly
-	padding: 0 4rem
 /*wraper home*/
 /* #region */
 /* #endregion */

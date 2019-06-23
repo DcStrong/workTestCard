@@ -118,6 +118,11 @@ let path = {
         js: {
           file: 'node_modules/jquery/dist/jquery.min.js'
         }
+      },
+      simpleslider: {
+        js: {
+          file: 'node_modules/simple-slider/dist/simpleslider.min.js'
+        }
       }
     };
   })()
@@ -165,10 +170,12 @@ task(tasks.init, done => {
   src(path.ext.bootstrap.sass.file).pipe(dest(path.dev.css.dir));
   src(path.ext.bootstrap.js.file).pipe(dest(path.dev.js.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dev.js.dir));
+  src(path.ext.simpleslider.js.file).pipe(dest(path.dev.js.dir));
 
   src(path.ext.bootstrap.sass.file).pipe(dest(path.dist.css.dir));
   src(path.ext.bootstrap.js.file).pipe(dest(path.dist.js.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dist.js.dir));
+  src(path.ext.simpleslider.js.file).pipe(dest(path.dist.js.dir));
   done();
 });
 

@@ -11,6 +11,12 @@ html(lang="en")
     <div class='wrapper'>
       header.header
         div.container
-          div.logo
-            img.img(src="../assets/img/Logo_Ubkrent_font_co.png", alt="Logo")
+          .row.no-gutters
+            .col-3
+            .col-6
+              div.logo
+                img.img(src="../assets/img/Logo_Ubkrent_font_co.png", alt="Logo")
+            .col-3
+              a.phone(href="tel:88612387950") 8 861 238 79 50
+              button.callback заказать звонок
           include nav.pug
