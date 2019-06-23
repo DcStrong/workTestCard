@@ -1,9 +1,16 @@
 include includes/header.pug
 
 // section-intro
-
-div.fullpage-bg
-  img.img(src="../assets/img/front-bg.jpg", alt="Ubk-Rent")
+div.slider
+  button.prev
+  button.next
+  div(data-simple-slider)
+    .slider__slide
+      img.slider__img(src="../assets/img/front-bg.jpg", alt="Ubk-Rent")
+      h4.slide__title Описание_1
+    .slider__slide
+      img.slider__img(src="../assets/img/front-bg.jpg", alt="Ubk-Rent")
+      h4.slide__title Описание_2
 
 div.page.front
 
