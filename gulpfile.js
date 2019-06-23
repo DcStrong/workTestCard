@@ -2,7 +2,8 @@ const { task, watch, parallel, series, src, dest } = require('gulp');
 const concat = require('gulp-concat');
 const less = require('gulp-less');
 const pug = require('gulp-pug');
-const sass = require("gulp-sass");
+const sass = require('gulp-sass');
+const stylus = require('gulp-stylus');
 const babel = require('gulp-babel');
 const browserSync = require('browser-sync').create();
 const del = require('del'); // https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md
@@ -16,6 +17,7 @@ let path = {
       js      : 'js/',
       less    : 'less/',
       sass    : 'sass/',
+      stylus  : 'stylus/',
       pug     : 'pug/',
       img     : 'img/',
       icons   : 'icons/',
@@ -27,6 +29,7 @@ let path = {
       less    : '**/*.less',
       scss    : '**/*.scss',
       sass    : '**/*.sass',
+      stylus  : '**/*.stylus',
       pug     : '**/*.pug',
       img     : '**/*.*',
       icons   : '**/*.*',
@@ -35,14 +38,15 @@ let path = {
 
     return {
       root    : root,
-      js      : { dir: `${root}${dir.js}`,    file: `${root}${dir.js}${file.js}`         },
-      less    : { dir: `${root}${dir.less}`,  file: `${root}${dir.less}${file.less}`     },
-      scss    : { dir: `${root}${dir.sass}`,  file: `${root}${dir.sass}${file.scss}`     },
-      sass    : { dir: `${root}${dir.sass}`,  file: `${root}${dir.sass}${file.sass}`     },
-      pug     : { dir: `${root}${dir.pug}`,   file: `${root}${dir.pug}${file.pug}`       },
-      img     : { dir: `${root}${dir.img}`,   file: `${root}${dir.img}${file.img}`       },
-      icons   : { dir: `${root}${dir.icons}`, file: `${root}${dir.icons}${file.icons}`   },
-      fonts   : { dir: `${root}${dir.fonts}`, file: `${root}${dir.fonts}${file.fonts}`   }
+      js      : { dir: `${root}${dir.js}`,     file: `${root}${dir.js}${file.js}`         },
+      less    : { dir: `${root}${dir.less}`,   file: `${root}${dir.less}${file.less}`     },
+      scss    : { dir: `${root}${dir.sass}`,   file: `${root}${dir.sass}${file.scss}`     },
+      sass    : { dir: `${root}${dir.sass}`,   file: `${root}${dir.sass}${file.sass}`     },
+      stylus  : { dir: `${root}${dir.stylus}`, file: `${root}${dir.stylus}${file.stylus}` },
+      pug     : { dir: `${root}${dir.pug}`,    file: `${root}${dir.pug}${file.pug}`       },
+      img     : { dir: `${root}${dir.img}`,    file: `${root}${dir.img}${file.img}`       },
+      icons   : { dir: `${root}${dir.icons}`,  file: `${root}${dir.icons}${file.icons}`   },
+      fonts   : { dir: `${root}${dir.fonts}`,  file: `${root}${dir.fonts}${file.fonts}`   }
     };
   })(),
 
@@ -107,11 +111,8 @@ let path = {
   ext: (() => { // внешние зависимости
     return {
       bootstrap: {
-        sass: {
+        css: {
           file: 'node_modules/bootstrap/dist/css/bootstrap.min.css'
-        },
-        js: {
-          file: 'node_modules/bootstrap/dist/js/bootstrap.min.js'
         }
       },
       jquery: {
@@ -140,6 +141,7 @@ let tasks = {
   img     : 'img',
   less    : 'less',
   sass    : 'sass',
+  stylus  : 'stylus',
   pug     : 'pug',
   babel   : 'babel',
 
@@ -167,13 +169,11 @@ task(tasks.clean, done => {
 });
 
 task(tasks.init, done => {
-  src(path.ext.bootstrap.sass.file).pipe(dest(path.dev.css.dir));
-  src(path.ext.bootstrap.js.file).pipe(dest(path.dev.js.dir));
+  src(path.ext.bootstrap.css.file).pipe(dest(path.dev.css.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dev.js.dir));
   src(path.ext.simpleslider.js.file).pipe(dest(path.dev.js.dir));
 
-  src(path.ext.bootstrap.sass.file).pipe(dest(path.dist.css.dir));
-  src(path.ext.bootstrap.js.file).pipe(dest(path.dist.js.dir));
+  src(path.ext.bootstrap.css.file).pipe(dest(path.dist.css.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dist.js.dir));
   src(path.ext.simpleslider.js.file).pipe(dest(path.dist.js.dir));
   done();
@@ -182,6 +182,7 @@ task(tasks.init, done => {
 task(tasks.watch, done => {
   watch(path.src.less.file, series(tasks.less));
   watch(path.src.sass.file, series(tasks.sass));
+  watch(path.src.stylus.file, series(tasks.stylus));
   watch(path.src.pug.file, series(tasks.pug));
   watch(path.src.js.file, series(tasks.babel));
   watch(path.src.fonts.file, series(tasks.fonts));
@@ -243,6 +244,11 @@ task(tasks.sass, done => {
   done();
 });
 
+task(tasks.stylus, done => {
+  src(path.src.stylus.file).pipe(plumber()).pipe(stylus()).pipe(dest(path.dev.css.dir));
+  done();
+});
+
 task(tasks.pug, done => {
   src(path.src.pug.file).pipe(plumber()).pipe(pug()).pipe(dest(path.dev.html.dir));
   done();
@@ -255,7 +261,7 @@ task(tasks.babel, done => {
 
 task(tasks.dist, done => {
   src([`!${path.dev.css.dir}/bootstrap.css`, path.dev.css.file]).pipe(concat('style.css')).pipe(dest(path.dist.css.dir));
-  src([`!${path.dev.js.dir}/bootstrap.min.js`, `!${path.dev.js.dir}/jquery.min.js`, path.dev.js.file]).pipe(concat('script.js')).pipe(dest(path.dist.js.dir));
+  // src([`!${path.dev.js.dir}/bootstrap.min.js`, `!${path.dev.js.dir}/jquery.min.js`, path.dev.js.file]).pipe(concat('script.js')).pipe(dest(path.dist.js.dir));
 
   src(path.dev.assets.file).pipe(dest(path.dist.assets.dir));
   done();
@@ -267,6 +273,7 @@ task(tasks.refresh, series(
   tasks.assets,
   tasks.less,
   tasks.sass,
+  tasks.stylus,
   tasks.pug,
   tasks.babel,
   done => { done(); }

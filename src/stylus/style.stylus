@@ -1,0 +1,162 @@
+/* #region globals */
+
+$primary = #141448
+$secondary = #eb6856
+$text = #262626
+$text-accent = white
+$bg = white
+
+/* #endregion */
+
+/* #region core */
+
+html
+  font-size: 10px
+
+html,
+body
+  padding: 0
+  margin: 0
+  width: 100%
+  height: 100%
+  font-family: "Open Sans"
+
+*
+  box-sizing: border-box
+
+/* #endregion */
+
+
+/* #region header */
+
+.header
+  z-index: 1000
+
+/* #region header__contact */
+
+.header__contact
+  text-align: right
+  margin-top: 5.4rem
+
+.contact__phone
+  display: block
+  font-size: 1.8rem
+  color: $text-accent
+
+.contact__callback
+  font-size: 1.6rem
+  color: $secondary
+  text-decoration: underline
+
+/* #endregion */
+
+/* #region logo */
+
+.custom-logo-link
+  display: block;
+  margin: 0 auto
+  width: 17rem
+  height: 17rem
+
+.custom-logo
+  width: 100%
+  height: 100%
+  object-fit: cover
+
+/* #endregion */
+
+/* #region header__nav */
+
+.header__nav .nav__menu
+  display: flex
+  margin-top: 1rem
+  margin-bottom: 0
+  padding: 0
+  flex-flow: row nowrap
+  justify-content: space-between
+  list-style: none
+
+.header__nav .menu-item a
+  &:hover
+    color: $secondary
+  color: $text-accent
+  text-decoration: none
+  font-size: 1.6rem
+
+/* #endregion */
+
+/*header-menu */
+
+/*wraper home */
+
+.realty
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-evenly
+
+.realty__link
+  &:hover
+    color: $text-accent
+    text-decoration: none
+  padding: 0.5rem 3.2rem
+  font-size: 1.6rem
+  color: $text-accent
+  background-color: $secondary
+  border-radius: 5px
+  font-family: "Gotham Pro"
+
+/*wraper home */
+
+/* #region */
+
+.page__title
+  margin-top: 14rem
+  margin-bottom: 0
+  font-size: 4.3rem
+  letter-spacing: 0.3rem
+  text-align: center
+  font-family: "forum"
+  text-transform: uppercase
+  color: $text-accent
+
+.slider
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -1
+
+  &:after
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: $primary
+    opacity: 0.6
+
+.slider__img
+  width: 100%
+  height: 100%
+  object-fit: cover
+
+.slider__control
+  position: absolute
+  top: 50%
+
+  &.next
+    right: 13rem
+
+  &.prev
+    left: 13rem
+
+[data-simple-slider]
+  height: 100%
+  z-index: -2
+
+/* #endregion */
+
+/* #region */
+/* #endregion */

@@ -1,3 +1,3 @@
-simpleslider.getSlider();
-
-
+;(function($) {
+  simpleslider.getSlider();
+})(jQuery);
