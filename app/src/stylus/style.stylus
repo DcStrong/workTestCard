@@ -194,5 +194,5 @@ button
 .assortment__pupop
   display: block
   position: absolute
-  
+
 /* #endregion */

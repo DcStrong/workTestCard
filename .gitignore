@@ -1,5 +1,4 @@
-dev
-dist
+app/dev
+app/dist
 node_modules
 .sonarlint
-.package-lock.json
