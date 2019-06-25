@@ -50,13 +50,13 @@ config['postcss'] = [
         partial: i.featureData.partial
       };
 
-      let prefix = '[Can I Use]'.blue;
+      let prefix = '[' + 'Can I Use'.blue + ']';
       let source = `~\\${fileName}:${fileLine}`.green;
       let prop = `${cssProp}`.magenta;
       let ms = `${cssSup.missing}`.red;
       let ps = `${cssSup.partial}`.yellow;
 
-      console.log('\n', prefix, source, prop,'\n    ',  ms,'\n    ', ps);
+      console.log('\r\n', prefix, source, prop,'\r\n    ',  ms,'\r\n    ', ps);
     }
   })
 ];
