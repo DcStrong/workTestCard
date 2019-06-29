@@ -15,12 +15,14 @@ const stylus = require('gulp-stylus');
 const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
+const order = require("gulp-order");
 /**
  * postcss plugins
  */
 const doiuse = require('doiuse');
 const flexbugs = require('postcss-flexbugs-fixes');
 const autoprefixer = require('autoprefixer');
+const cssDeclarationSorter = require('css-declaration-sorter');
 /**
  * miscellaneous plugins
  */
@@ -39,6 +41,7 @@ const config = require('./server/config');
 config['postcss'] = [
   flexbugs(),
   autoprefixer({ cascade: false }),
+  cssDeclarationSorter({ order: 'smacss' }),
   doiuse({
     ignore: ['rem'],
     ignoreFiles: ['**/bootstrap.min.css'],
@@ -202,42 +205,39 @@ task(tasks.img, done => {
   done();
 });
 /**
- *
+ * TODO  FIX : log order cocat
  */
 task(tasks.less, done => {
   src(path.src.less.file)
     .pipe(plumber())
     .pipe(less())
     .pipe(postcss(config.postcss))
+    .pipe(concat('style.css'))
     .pipe(dest(path.dev.css.dir));
 
   done();
 });
 /**
- *
+ * TODO  FIX : log order cocat
  */
 task(tasks.sass, done => {
-  src(path.src.sass.file)
+  src([path.src.sass.file, path.src.scss.file])
     .pipe(plumber())
     .pipe(sass())
     .pipe(postcss(config.postcss))
+    .pipe(concat('style.css'))
     .pipe(dest(path.dev.css.dir));
-
-  src(path.src.scss.file)
-    .pipe(plumber())
-    .pipe(sass())
-    .pipe(postcss(config.postcss))
-    .pipe(dest(path.dev.css.dir));
-
   done();
 });
 /**
- * TODO  FIX :
+ * TODO  FIX : log order cocat
  */
 task(tasks.stylus, done => {
   src(path.src.stylus.file)
     .pipe(plumber())
+    .pipe(order(['**/*']))
     .pipe(stylus())
+    .pipe(concat('style.css'))
     .pipe(pipeMarker(() => { console.log('\r\n       CSS PROPERTY       |      SOURCE     |                        NOT SUPPORTED                         |           PARTIAL SUPPORT           '.black.bgBlue); }))
     .pipe(postcss(config.postcss))
     .pipe(dest(path.dev.css.dir));
@@ -245,7 +245,7 @@ task(tasks.stylus, done => {
   done();
 });
 /**
- *
+ * TODO  FIX : exlude
  */
 task(tasks.pug, done => {
   src(path.src.pug.file)
@@ -267,7 +267,7 @@ task(tasks.babel, done => {
   done();
 });
 /**
- * TODO  FIX :
+ * TODO  FIX : exclude
  */
 task(tasks.dist, done => {
   src([`!${path.dev.css.dir}/bootstrap.css`, path.dev.css.file])

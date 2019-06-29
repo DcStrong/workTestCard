@@ -1,0 +1,239 @@
+@require 'colors.styl'
+
+/* #region page-club */
+
+.page-club
+  background-color $bg
+
+.page-club .section
+  position relative
+
+.page-club .section__header
+  position relative
+  text-align center
+
+.page-club .section__img-wrapper
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  &:before
+    content ''
+    position absolute
+    top 0
+    left 0
+    right 0
+    height 10rem
+    background-image: url(../assets/img/sep-top.png)
+    background-size 100% 100%
+    background-repeat no-repeat
+    background-position 100% 100%
+    z-index 2
+  &:after
+    content ''
+    position absolute
+    bottom 0
+    left 0
+    right 0
+    height 10rem
+    background-image url(../assets/img/sep-bot.png)
+    background-size 100% 100%
+    background-repeat no-repeat
+    background-position 100% 100%
+    z-index 2
+
+.page-club .section__img
+  position relative
+  width 100%
+  height 100%
+  object-fit cover
+  z-index 0
+
+.page-club .section__img-overlay
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  background-color $primary
+  opacity .4
+  z-index 1
+
+.page-club .section__title
+  position relative
+  padding 20rem 0
+  margin 0
+  color $text-accent
+  font-size 5rem
+  font-family Forum
+  letter-spacing 1rem
+  text-transform uppercase
+  z-index 3
+  &:before
+    content '♦  '
+    color $secondary
+    // background-image url("dataimage/svg+xmlutf8,<svg xmlns='http//www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='#eb6856' d='M0 0h20v20H0z'/></svg>")
+  &:after
+    content '  ♦'
+    color $secondary
+
+.page-club .section__body
+  padding 5rem 0
+
+.page-club .section__description p
+  margin 0
+  font-size 1.6rem
+
+/* #endregion */
+
+
+/* #region page-club section CLUB */
+
+.page-club .section.club
+  position static
+
+.page-club .section.club .section__header
+  position static
+  padding 15rem 0 30rem
+
+.page-club .section.club .section__title
+  padding 0
+
+.page-club .section.club .section__img-wrapper
+  height 71.4rem
+  &:before
+    content none
+
+.page-club .card__photo-wrapper
+  width 30rem
+  height 30rem
+  margin 0 auto
+
+.page-club .card__photo
+  width 100%
+  height 100%
+
+/* #endregion */
+
+
+/* #region page-club section PARTNERS */
+
+.page-club .partners .list-wrapper
+  position relative
+  margin 0 auto
+  max-width 110rem
+
+.page-club .partners__control
+  position absolute
+  margin: 0
+  padding: 0
+  width: 6rem
+  height 6rem
+  top 50%
+  border: none
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: 100% 100%
+  background-color: transparent
+  transform translateY(-50%)
+  &.left
+    left 0
+    background-image url(../assets/icons/left.svg)
+    transform translateX(-50%)
+  &.right
+    right 0
+    background-image url(../assets/icons/right.svg)
+    transform translateX(50%)
+
+.page-club .partners__list
+  display flex
+  flex-flow row wrap
+  // margin 0 auto
+  padding 0
+  // max-width 110rem
+  list-style none
+  justify-content space-evenly
+
+.page-club .partners__item
+  display none
+  position relative
+  padding 1.5rem
+  height 30rem
+  flex 0 0 30rem
+  animation showUp .5s linear
+
+@keyframes showUp
+  from
+    opacity 0
+  to
+    opacity 1
+
+.page-club .partners__item[data-visibility='1']
+  display block
+
+.page-club .partners__img
+  width 100%
+  height 100%
+  object-fit cover
+  background-color #888
+
+.page-club .partners__discount
+  position absolute
+  top 1.5rem
+  right 1.5rem
+  width 5rem
+  height 5rem
+  background-image url(../assets/icons/discount.svg)
+  background-position center center
+  background-repeat no-repeat
+
+/* #endregion */
+
+
+/* #region page-club section HOTELS */
+
+.page-club .hotels__list
+  display flex
+  margin 0 auto
+  padding 0
+  max-width 110rem
+  flex-flow row wrap
+  list-style none
+  justify-content space-evenly
+
+.page-club .hotels__item
+  padding 1.5rem
+  height 30rem
+  flex 0 0 30rem
+
+.page-club .hotels__img
+  width 100%
+  height auto
+
+.page-club .hotels__instruction-title
+  padding 5rem 0 1rem
+  font-size 1.6rem
+
+.page-club .hotels__instruction-title span
+  font-weight bold
+
+.page-club .hotels__instruction-list
+  padding 0
+  padding-left 2rem
+
+.page-club .hotels__instruction-item
+  font-size 1.6rem
+
+.page-club .hotels__order
+  display block
+  margin 5rem auto
+  padding 1rem 5rem
+  border none
+  border-radius 5px
+  font-size 1.6rem
+  color $text-accent
+  background-color $secondary
+  font-family 'Gotham Pro'
+
+/* #endregion */

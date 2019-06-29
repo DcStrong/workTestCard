@@ -1,7 +1,7 @@
 const browserSync = {
   server: ['app/dev/html', 'app/dev'],
   // ghostMode: false,
-  reloadDelay: 2000,
+  reloadDelay: 1000,
   reloadDebounce: 1000,
   reloadThrottle: 1
 };

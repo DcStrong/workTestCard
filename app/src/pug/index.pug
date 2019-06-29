@@ -1,35 +1,32 @@
 include includes/header.pug
 
-// front-page main slider
-div.slider-wrapper
-  div.slider__control
-    button.slider__prev(data-control="-1")
-    button.slider__next(data-control="1")
-  div.slider
-    div(data-simple-slider)
-      .slider__slide
-        img.slider__img(src="../assets/img/front-bg.jpg" alt="Ubk-Rent")
-        h4.slide__title Описание_1
-      .slider__slide
-        img.slider__img(src="../assets/img/bg_ere.jpg" alt="Ubk-Rent")
-        h4.slide__title Описание_2
-// /front-page main slider
+div.page-main
 
-// /front-page
-div.front-page.page.container
+  div.container
 
-  h1.page__title
-    | Аренда недвижимости
-    br
-    | премиум класса в Ялте
+    h1.title
+      | Аренда недвижимости
+      br
+      | премиум класса в Ялте
 
-  div.realty
-    a.realty__link(href='#') Апартаменты
-    a.realty__link(href='#') Дома и виллы
+    div.realty
+      a.realty__link(href='#') Апартаменты
+      a.realty__link(href='#') Дома и виллы
 
-  div
-    button.assortment(type='button' data-popup-toggler) Заказать индивидуальный подбор
-    include components/assortment-popup.pug
-// /front-page
+    include components/individual-pick.pug
 
+  div.slides-wrapper
+    div.slides__controls
+      button.slides__prev(data-control="-1")
+      button.slides__next(data-control="1")
+    div.slides
+      div(data-simple-slider)
+        .slides__slide
+          img.slides__img(src="../assets/img/front-bg.jpg" alt="Ubk-Rent")
+          h4.slides__title Описание_1
+        .slides__slide
+          img.slides__img(src="../assets/img/bg_ere.jpg" alt="Ubk-Rent")
+          h4.slides__title Описание_2
+
+- var page = 'index'
 include includes/footer.pug
