@@ -18,11 +18,13 @@
     "dist/js/jquery.min.js"
   ],
   "dependencies": {
+    "air-datepicker": "^2.2.3",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "node-env-file": "^0.1.8",
     "object-fit-images": "^3.2.4",
-    "simple-slider": "^1.0.0"
+    "simple-slider": "^1.0.0",
+    "through2": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -52,7 +54,6 @@
     "last 4 versions",
     "Firefox ESR",
     "not dead",
-    "ie > 8",
     "not op_mini all",
     "not ExplorerMobile > 0"
   ]

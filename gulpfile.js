@@ -2,6 +2,7 @@
  * gulp functions
  */
 const { task, watch, parallel, series, src, dest } = require('gulp');
+const through = require('through2');
 /**
  * gulp plugins
  */
@@ -40,23 +41,25 @@ config['postcss'] = [
   autoprefixer({ cascade: false }),
   doiuse({
     ignore: ['rem'],
-    ignoreFiles:  ['**/bootstrap.min.css', '**/datepicker.css'],
-    onFeatureUsage: function (i) {
+    ignoreFiles: ['**/bootstrap.min.css'],
+    onFeatureUsage (i) {
       let fileName = i.usage.source.input.file.match(/[\w-]+?(?=\.)/)[0];
       let fileLine = i.usage.source.start.line;
-      let cssProp = i.feature;
+      let cssProp = i.feature || '';
       let cssSup = {
-        missing: i.featureData.missing,
-        partial: i.featureData.partial
+        missing: i.featureData.missing || '',
+        partial: i.featureData.partial || ''
       };
 
-      let prefix = '[' + 'Can I Use'.blue + ']';
-      let source = `~\\${fileName}:${fileLine}`.green;
-      let prop = `${cssProp}`.magenta;
-      let ms = `${cssSup.missing}`.red;
-      let ps = `${cssSup.partial}`.yellow;
+      let source = `${fileName}:${fileLine}`;
 
-      console.log('\r\n', prefix, source, prop,'\r\n    ',  ms,'\r\n    ', ps);
+      while (cssProp.length < 25) cssProp += ' ';
+      while (source.length < 15) source += ' ';
+      while (cssSup.missing.length < 60) cssSup.missing += ' ';
+
+      let log = `${cssProp.magenta} | ${source.green} | ${cssSup.missing.red} | ${cssSup.partial.yellow}`;
+
+      console.log(log);
     }
   })
 ];
@@ -65,6 +68,10 @@ config['plumber'] = {
     process.env.NODE_ENV === 'production' && plumber.stop();
   }
 };
+/**
+ * additional functions
+ */
+var pipeMarker = func => through.obj((file, enc, cb) => { func(); return cb(null, file); });
 /**
  * gulp tasks list
  */
@@ -109,7 +116,7 @@ task(tasks.clean, done => {
   return Promise.all(dels).then(() => { done(); }, e => { console.log(e); done(); });
 });
 /**
- *
+ * TODO  FIX :
  */
 task(tasks.init, done => {
   src(path.ext.datepicker.css.file).pipe(dest(path.dev.css.dir));
@@ -157,6 +164,7 @@ task(tasks.watch, done => {
  */
 task(tasks.live, done => {
   browserSync.init(config.browserSync);
+
   done();
 });
 /**
@@ -166,6 +174,7 @@ task(tasks.assets, done => {
   src(path.src.fonts.file).pipe(dest(path.dev.fonts.dir));
   src(path.src.icons.file).pipe(dest(path.dev.icons.dir));
   src(path.src.img.file).pipe(dest(path.dev.img.dir));
+
   done();
 });
 /**
@@ -173,6 +182,7 @@ task(tasks.assets, done => {
  */
 task(tasks.fonts, done => {
   src(path.src.fonts.file).pipe(dest(path.dev.fonts.dir));
+
   done();
 });
 /**
@@ -180,6 +190,7 @@ task(tasks.fonts, done => {
  */
 task(tasks.icons, done => {
   src(path.src.icons.file).pipe(dest(path.dev.icons.dir));
+
   done();
 });
 /**
@@ -187,52 +198,88 @@ task(tasks.icons, done => {
  */
 task(tasks.img, done => {
   src(path.src.img.file).pipe(dest(path.dev.img.dir));
+
   done();
 });
 /**
  *
  */
 task(tasks.less, done => {
-  src(path.src.less.file).pipe(plumber()).pipe(less()).pipe(postcss(config.postcss)).pipe(dest(path.dev.css.dir));
+  src(path.src.less.file)
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(postcss(config.postcss))
+    .pipe(dest(path.dev.css.dir));
+
   done();
 });
 /**
  *
  */
 task(tasks.sass, done => {
-  src(path.src.sass.file).pipe(plumber()).pipe(sass()).pipe(postcss(config.postcss)).pipe(dest(path.dev.css.dir));
-  src(path.src.scss.file).pipe(plumber()).pipe(sass()).pipe(postcss(config.postcss)).pipe(dest(path.dev.css.dir));
+  src(path.src.sass.file)
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(postcss(config.postcss))
+    .pipe(dest(path.dev.css.dir));
+
+  src(path.src.scss.file)
+    .pipe(plumber())
+    .pipe(sass())
+    .pipe(postcss(config.postcss))
+    .pipe(dest(path.dev.css.dir));
+
   done();
 });
 /**
- *
+ * TODO  FIX :
  */
 task(tasks.stylus, done => {
-  src(path.src.stylus.file).pipe(plumber()).pipe(stylus()).pipe(postcss(config.postcss)).pipe(dest(path.dev.css.dir));
+  src(path.src.stylus.file)
+    .pipe(plumber())
+    .pipe(stylus())
+    .pipe(pipeMarker(() => { console.log('\r\n       CSS PROPERTY       |      SOURCE     |                        NOT SUPPORTED                         |           PARTIAL SUPPORT           '.black.bgBlue); }))
+    .pipe(postcss(config.postcss))
+    .pipe(dest(path.dev.css.dir));
+
   done();
 });
 /**
  *
  */
 task(tasks.pug, done => {
-  src(path.src.pug.file).pipe(plumber()).pipe(pug()).pipe(dest(path.dev.html.dir));
+  src(path.src.pug.file)
+    .pipe(plumber())
+    .pipe(pug())
+    .pipe(dest(path.dev.html.dir));
+
   done();
 });
 /**
  *
  */
 task(tasks.babel, done => {
-  src(path.src.js.file).pipe(plumber()).pipe(babel({ presets: ['@babel/env'] })).pipe(dest(path.dev.js.dir));
+  src(path.src.js.file)
+    .pipe(plumber())
+    .pipe(babel({ presets: ['@babel/env'] }))
+    .pipe(dest(path.dev.js.dir));
+
   done();
 });
 /**
- *
+ * TODO  FIX :
  */
 task(tasks.dist, done => {
-  src([`!${path.dev.css.dir}/bootstrap.css`, path.dev.css.file]).pipe(concat('style.css')).pipe(dest(path.dist.css.dir));
-  src([`!${path.dev.js.dir}/bootstrap.min.js`, `!${path.dev.js.dir}/jquery.min.js`, path.dev.js.file]).pipe(concat('script.js')).pipe(dest(path.dist.js.dir));
+  src([`!${path.dev.css.dir}/bootstrap.css`, path.dev.css.file])
+    .pipe(concat('style.css'))
+    .pipe(dest(path.dist.css.dir));
+
+  src([`!${path.dev.js.dir}/bootstrap.min.js`, `!${path.dev.js.dir}/jquery.min.js`, path.dev.js.file])
+    .pipe(concat('script.js'))
+    .pipe(dest(path.dist.js.dir));
 
   src(path.dev.assets.file).pipe(dest(path.dist.assets.dir));
+
   done();
 });
 /**
@@ -245,7 +292,6 @@ task(tasks.refresh, series(
   tasks.less,
   tasks.sass,
   tasks.stylus,
-  // tasks.postcss,
   tasks.pug,
   tasks.babel,
   done => { done(); }
