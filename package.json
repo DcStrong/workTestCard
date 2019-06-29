@@ -21,6 +21,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "node-env-file": "^0.1.8",
+    "object-fit-images": "^3.2.4",
     "simple-slider": "^1.0.0"
   },
   "devDependencies": {

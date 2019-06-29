@@ -40,7 +40,7 @@ config['postcss'] = [
   autoprefixer({ cascade: false }),
   doiuse({
     ignore: ['rem'],
-    ignoreFiles: ['**/bootstrap.min.css'],
+    ignoreFiles:  ['**/bootstrap.min.css', '**/datepicker.css'],
     onFeatureUsage: function (i) {
       let fileName = i.usage.source.input.file.match(/[\w-]+?(?=\.)/)[0];
       let fileLine = i.usage.source.start.line;
@@ -112,13 +112,17 @@ task(tasks.clean, done => {
  *
  */
 task(tasks.init, done => {
+  src(path.ext.datepicker.css.file).pipe(dest(path.dev.css.dir));
   src(path.ext.bootstrap.css.file).pipe(dest(path.dev.css.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dev.js.dir));
   src(path.ext.simpleslider.js.file).pipe(dest(path.dev.js.dir));
+  src(path.ext.datepicker.js.file).pipe(dest(path.dev.js.dir));
 
+  src(path.ext.datepicker.css.file).pipe(dest(path.dist.css.dir));
   src(path.ext.bootstrap.css.file).pipe(dest(path.dist.css.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dist.js.dir));
   src(path.ext.simpleslider.js.file).pipe(dest(path.dist.js.dir));
+  src(path.ext.datepicker.js.file).pipe(dest(path.dist.js.dir));
 
   done();
 });

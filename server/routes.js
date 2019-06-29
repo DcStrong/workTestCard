@@ -121,6 +121,14 @@ let ext = (() => {
       js: {
         file: 'node_modules/simple-slider/dist/simpleslider.min.js'
       }
+    },
+    datepicker: {
+      js: {
+        file: 'node_modules/air-datepicker/dist/js/datepicker.min.js'
+      },
+      css: {
+        file: 'node_modules/air-datepicker/dist/css/datepicker.min.css'
+      }
     }
   };
 })();
