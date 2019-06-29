@@ -11,10 +11,12 @@ header.header
   align-items center
 
 .header__logo
-  display block
+  display flex
   margin 0 auto
   width 20rem
-  height auto
+  height 13rem
+  flex-direction column
+  justify-content center
 
 .header__logo img
   display block
@@ -29,6 +31,11 @@ header.header
   display block
   font-size 1.8rem
   color $text-accent
+  @media screen and (max-width 480px)
+    font-size: 1.2rem
+
+  @media screen and (max-width 320px)
+    font-size: 1rem
 
 .header__callme
   padding 0
@@ -38,6 +45,11 @@ header.header
   color $secondary
   text-decoration underline
   background-color transparent
+  @media screen and (max-width 480px)
+    font-size: 1.2rem
+
+  @media screen and (max-width 320px)
+    font-size: 1rem
 
 .header__menu
   display flex
@@ -49,6 +61,7 @@ header.header
   list-style none
 
 .header__menu-toggler--open
+  display block
   width 3rem
   height 2rem
   background-image url(../assets/icons/open.png)
@@ -63,11 +76,14 @@ header.header
     color $secondary
     text-decoration underline
 
-/* fsdfsdf */
+/* #media query */
 
 @media screen and (max-width 768px)
   header.header
     max-width 100%
+
+  .header__logo
+     width 15rem
 
   .header__nav
     position absolute
@@ -104,9 +120,14 @@ header.header
 @media screen and (max-width 480px)
   .header__logo
      width 10rem
+     height 8rem
 
 @media screen and (max-width 320px)
   .header__nav
     width 100%
+
+@media screen and (min-width 769px)
+  .header__menu-toggler--open
+    display none
 
 /* #endregion */

@@ -1,7 +1,7 @@
 include includes/header.pug
 
 div.page-taxonomy
-  section.section
+  section.section.header
     div.section__header
       div.section__img-wrapper
         img.section__img(src="../assets/img/apart_bg.jpg", alt="")
@@ -10,15 +10,6 @@ div.page-taxonomy
       h1.section__title Аппартаменты
 
     div.section__body.container
-      div.categories-wrapper
-        input#date-checkin.categories-input.datepicker-here(type="text" required readonly)
-        label.categories__label(for="date-checkin") Заезд
-      div.categories-wrapper
-        input#date-checkout.categories-input.datepicker-here(type="text" required readonly)
-        label.categories__label.middle-label(for="date-checkout") Выезд
-      div.categories-wrapper
-        input#guests.categories-input(type="text" required)
-        label.categories__label(for="guests") Кол-во гостей
-      button.categories-button(type="button")
 
+- var page = 'taxonomy'
 include includes/footer.pug
