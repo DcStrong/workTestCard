@@ -2,24 +2,27 @@ script(src="../js/jquery.min.js")
 script(src="../js/simpleslider.min.js")
 script(src="../js/datepicker.min.js")
 script(src="../js/script.js")
-footer.site-footer.container
-  .col-4
 
-  .col-4
-    div.contacts
-      p р.Крым, г.Ялта, ул.Свердлова, д.3
-      p
-        a.phone(href='tel:+79789890777') +7 (978) 989-07-77
-      p
-        a.mail(href='mailto:info@ubk-rent.ru') info@ubk-rent.ru
+if page != 'index'
 
-  .col-4
-    ul
-      li
-        a(href='#') Правила бронирования
-      li
-        a(href='#') Реквизиты
-      li
-        a(href='#') Реквизиты
-      li
-        a(href='#') Реквизиты
+  footer.footer.container
+    .col-4
+      #{page}
+    .col-4
+      div.contacts
+        p р.Крым, г.Ялта, ул.Свердлова, д.3
+        p
+          a.phone(href='tel:+79789890777') +7 (978) 989-07-77
+        p
+          a.mail(href='mailto:info@ubk-rent.ru') info@ubk-rent.ru
+
+    .col-4
+      ul
+        li
+          a(href='#') Правила бронирования
+        li
+          a(href='#') Реквизиты
+        li
+          a(href='#') Реквизиты
+        li
+          a(href='#') Реквизиты

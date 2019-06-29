@@ -1,63 +1,91 @@
-;(function($) {
-  // slider
-  try {
-  var slider = simpleslider.getSlider({
-    prop: 'opacity',
-    unit: '',
-    init: 0,
-    show: 1,
-    end: 0,
-    duration: 1,
-    delay: 5
-  });
-  $('.slider__prev').click(function(){
-    slider.prev();
-  });
-  $('.slider__next').click(function(){
-    slider.next();
-  });
-} catch(e) {}
+;($ => {
 
-  $('[data-popup-toggler]').click(function(){
-    $('[data-popup]').addClass('show');
-  });
-  $('.popup__close').click(function(){
-    $('[data-popup]').removeClass('show');
-  });
-
-  function t() {
-    let cursor = 6;
-    let items = $('.partners__item');
-
-    function switcher(cursor) {
-      items.attr('data-visibility', 0);
-      for(var i = cursor - 6; i < cursor; i++) {
-        $(items[i]).attr('data-visibility', 1);
-      }
+  /**
+   * main page slider
+   */
+  ;(() => {
+    if ($('.page-main [data-simple-slider]').length === 0) {
+      return;
     }
 
-    switcher(cursor);
+    let slider = simpleslider.getSlider({
+      prop: 'opacity',
+      unit: '',
+      init: 0,
+      show: 1,
+      end: 0,
+      duration: 1,
+      delay: 5
+    });
 
-    $('.partners__control').click(function() {
-      let intent = $(this).data('control');
+    $('.slides__prev').click(() => {
+      slider.prev(); });
 
-      if (intent == 1) {
-        if (cursor >= items.length) {
-          return;
-        }
+    $('.slides__next').click(() => {
+      slider.next(); });
+  })();
 
-        cursor += 6;
-      } else if (intent == -1) {
-        cursor -= 6;
+  /**
+   * popup control
+   */
+  ;(() => {
+    $('[data-popup-toggler]').click(function() {
+      let target = $(this).data('popup-toggler')
+      $('[data-popup="' + target + '"]').toggleClass('visible');
+    });
+  })();
 
-        if (cursor <= 0) {
-          cursor += 6;
-          return;
+  /**
+   * page club card
+   */
+  ;(function () {
+    if ($('.page-club').length === 0) {
+      return;
+    }
+    /**
+     *  TODO  FIX :
+     */
+    function ladingPartnersListSwitcher() {
+      let cursor = 6;
+      let items = $('.partners__item');
+
+      if (!items.length) {
+        return;
+      }
+
+      function switcher(cursor) {
+        items.attr('data-visibility', 0);
+
+        for(let i = cursor - 6; i < cursor; i++) {
+          $(items[i]).attr('data-visibility', 1);
         }
       }
 
       switcher(cursor);
-    });
-  }
-  t();
+
+      $('.partners__control').click(function() {
+        let intent = $(this).data('control');
+
+        if (intent == 1) {
+          if (cursor >= items.length) {
+            return;
+          }
+
+          cursor += 6;
+        } else if (intent == -1) {
+          cursor -= 6;
+
+          if (cursor <= 0) {
+            cursor += 6;
+            return;
+          }
+        }
+
+        switcher(cursor);
+      });
+    }
+
+    ladingPartnersListSwitcher();
+  })();
+
 })(jQuery);

@@ -7,24 +7,22 @@
   },
   "homepage": "https://bitbucket.org/BzzStudio/layout/src/master/README.md",
   "eslintIgnore": [
-    "src/css/bootstrap.css",
-    "dev/css/bootstrap.css",
-    "dist/css/bootstrap.css",
-    "src/js/bootstrap.min.js",
-    "dev/js/bootstrap.min.js",
-    "dist/js/bootstrap.min.js",
-    "src/js/jquery.min.js",
-    "dev/js/jquery.min.js",
-    "dist/js/jquery.min.js"
+    "app/src/css/bootstrap.css",
+    "app/src/js/bootstrap.min.js",
+    "app/src/js/jquery.min.js",
+    "app/dev/css/bootstrap.css",
+    "app/dev/js/bootstrap.min.js",
+    "app/dev/js/jquery.min.js",
+    "app/dist/css/bootstrap.css",
+    "app/dist/js/bootstrap.min.js",
+    "app/dist/js/jquery.min.js"
   ],
   "dependencies": {
     "air-datepicker": "^2.2.3",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
-    "node-env-file": "^0.1.8",
     "object-fit-images": "^3.2.4",
-    "simple-slider": "^1.0.0",
-    "through2": "^3.0.1"
+    "simple-slider": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -41,13 +39,16 @@
     "gulp-cli": "^2.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-less": "^4.0.1",
+    "gulp-order": "^1.2.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-stylus": "^2.7.0",
-    "postcss-flexbugs-fixes": "^4.1.0"
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "node-env-file": "^0.1.8",
+    "through2": "^3.0.1"
   },
   "browserslist": [
     "> 0.5%",

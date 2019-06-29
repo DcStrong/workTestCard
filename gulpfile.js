@@ -15,6 +15,7 @@ const stylus = require('gulp-stylus');
 const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
+const order = require("gulp-order");
 /**
  * postcss plugins
  */
@@ -204,7 +205,7 @@ task(tasks.img, done => {
   done();
 });
 /**
- *
+ * TODO  FIX : log order cocat
  */
 task(tasks.less, done => {
   src(path.src.less.file)
@@ -217,7 +218,7 @@ task(tasks.less, done => {
   done();
 });
 /**
- *
+ * TODO  FIX : log order cocat
  */
 task(tasks.sass, done => {
   src([path.src.sass.file, path.src.scss.file])
@@ -229,21 +230,22 @@ task(tasks.sass, done => {
   done();
 });
 /**
- * TODO  FIX : log
+ * TODO  FIX : log order cocat
  */
 task(tasks.stylus, done => {
   src(path.src.stylus.file)
     .pipe(plumber())
+    .pipe(order(['**/*']))
     .pipe(stylus())
+    .pipe(concat('style.css'))
     .pipe(pipeMarker(() => { console.log('\r\n       CSS PROPERTY       |      SOURCE     |                        NOT SUPPORTED                         |           PARTIAL SUPPORT           '.black.bgBlue); }))
     .pipe(postcss(config.postcss))
-    .pipe(concat('style.css'))
     .pipe(dest(path.dev.css.dir));
 
   done();
 });
 /**
- *
+ * TODO  FIX : exlude
  */
 task(tasks.pug, done => {
   src(path.src.pug.file)
@@ -265,7 +267,7 @@ task(tasks.babel, done => {
   done();
 });
 /**
- * TODO  FIX :
+ * TODO  FIX : exclude
  */
 task(tasks.dist, done => {
   src([`!${path.dev.css.dir}/bootstrap.css`, path.dev.css.file])

@@ -20,7 +20,7 @@ let src = (() => {
     less    : '**/*.less',
     scss    : '**/*.scss',
     sass    : '**/*.sass',
-    stylus  : '**/*.stylus',
+    stylus  : '**/*.styl',
     pug     : '**/*.pug',
     img     : '**/*.*',
     icons   : '**/*.*',
