@@ -232,6 +232,14 @@ button
   right: 1rem
   background-image: url(../assets/icons/right.svg)
 
+/* #media_region */
+
+@media screen and (max-width: 768px)
+  .slider__control
+    display: none
+
+/* endregion */
+
 /* endslider */
 
 /* #region */
@@ -310,7 +318,7 @@ button
   left: 50%
   transform: translate(-50%,0)
   top: 12rem
-  background-color: #141448e8
+  background-color: $primary
   padding: 3rem
 
 .popup__label
@@ -383,13 +391,7 @@ input:valid ~ label
 
 /* #endregion */
 
-/* #media_region */
 
-@media screen and (max-width: 768px)
-  .slider__control
-    display: none
-
-/* endregion */
 
 /* #categories_region */
 .categories
@@ -417,3 +419,30 @@ input:valid ~ label
   display: flex
   justify-content: center
   margin: 10rem 0 0 0
+
+.categories-input
+  background-color: transparent
+  border: 2px solid $secondary
+  border-radius: 5px
+
+#date-checkout .categories-input
+  margin-right: 1rem
+  margin-left: 1rem
+
+.categories-wrapper
+  position: relative
+
+input#date-checkout
+  margin: 0 4rem
+
+.categories-input
+  background-color: transparent
+  border: 2px solid $secondary
+  border-radius: 5px
+  padding: 10px 10px 0
+  font-size: 1.6rem
+  z-index: 2
+  color: $text-accent
+
+.categories__label.middle-label
+  margin: 0 4rem

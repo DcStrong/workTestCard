@@ -11,13 +11,13 @@
       input#mail.popup__input(type="mail" required)
       label.popup__label(for="mail") EMail
     div.input-wrapper
-      input.popup__input.datepicker-here(type="text" required)
-      label.popup__label(for="") Заезд
+      input#date-checkin.popup__input.datepicker-here(type="text" required readonly)
+      label.popup__label(for="date-checkin") Заезд
     div.input-wrapper
-      input.popup__input.datepicker-here(type="text" required)
-      label.popup__label(for="") Выезд
+      input#date-checkout.popup__input.datepicker-here(type="text" required readonly)
+      label.popup__label(for="date-checkout") Выезд
     div.input-wrapper
-      input.popup__input(type="text" required)
-      label.popup__label(for="") Кол-во гостей
+      input#guests.popup__input(type="text" required)
+      label.popup__label(for="guests") Кол-во гостей
     button.popup__submit(type="submit") Отправить заявку
     button.popup__close
