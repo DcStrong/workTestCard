@@ -121,13 +121,17 @@ task(tasks.clean, done => {
  * TODO  FIX :
  */
 task(tasks.init, done => {
+  src(path.ext.datepicker.css.file).pipe(dest(path.dev.css.dir));
   src(path.ext.bootstrap.css.file).pipe(dest(path.dev.css.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dev.js.dir));
   src(path.ext.simpleslider.js.file).pipe(dest(path.dev.js.dir));
+  src(path.ext.datepicker.js.file).pipe(dest(path.dev.js.dir));
 
+  src(path.ext.datepicker.css.file).pipe(dest(path.dist.css.dir));
   src(path.ext.bootstrap.css.file).pipe(dest(path.dist.css.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dist.js.dir));
   src(path.ext.simpleslider.js.file).pipe(dest(path.dist.js.dir));
+  src(path.ext.datepicker.js.file).pipe(dest(path.dist.js.dir));
 
   done();
 });
