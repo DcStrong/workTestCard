@@ -10,9 +10,15 @@ div.page-taxonomy
       h1.section__title Аппартаменты
 
     div.section__body.container
-      input(type="text")
-      input(type="text")
-      input(type="text")
-      button(type="submit")
+      div.categories-wrapper
+        input#date-checkin.categories-input.datepicker-here(type="text" required readonly)
+        label.categories__label(for="date-checkin") Заезд
+      div.categories-wrapper
+        input#date-checkout.categories-input.datepicker-here(type="text" required readonly)
+        label.categories__label.middle-label(for="date-checkout") Выезд
+      div.categories-wrapper
+        input#guests.categories-input(type="text" required)
+        label.categories__label(for="guests") Кол-во гостей
+      button.categories-button(type="button")
 
 include includes/footer.pug
