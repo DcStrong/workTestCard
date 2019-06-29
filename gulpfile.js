@@ -21,6 +21,7 @@ const postcss = require('gulp-postcss');
 const doiuse = require('doiuse');
 const flexbugs = require('postcss-flexbugs-fixes');
 const autoprefixer = require('autoprefixer');
+const cssDeclarationSorter = require('css-declaration-sorter');
 /**
  * miscellaneous plugins
  */
@@ -39,6 +40,7 @@ const config = require('./server/config');
 config['postcss'] = [
   flexbugs(),
   autoprefixer({ cascade: false }),
+  cssDeclarationSorter({ order: 'smacss' }),
   doiuse({
     ignore: ['rem'],
     ignoreFiles: ['**/bootstrap.min.css'],
@@ -205,6 +207,7 @@ task(tasks.less, done => {
     .pipe(plumber())
     .pipe(less())
     .pipe(postcss(config.postcss))
+    .pipe(concat('style.css'))
     .pipe(dest(path.dev.css.dir));
 
   done();
@@ -213,22 +216,16 @@ task(tasks.less, done => {
  *
  */
 task(tasks.sass, done => {
-  src(path.src.sass.file)
+  src([path.src.sass.file, path.src.scss.file])
     .pipe(plumber())
     .pipe(sass())
     .pipe(postcss(config.postcss))
+    .pipe(concat('style.css'))
     .pipe(dest(path.dev.css.dir));
-
-  src(path.src.scss.file)
-    .pipe(plumber())
-    .pipe(sass())
-    .pipe(postcss(config.postcss))
-    .pipe(dest(path.dev.css.dir));
-
   done();
 });
 /**
- * TODO  FIX :
+ * TODO  FIX : log
  */
 task(tasks.stylus, done => {
   src(path.src.stylus.file)
@@ -236,6 +233,7 @@ task(tasks.stylus, done => {
     .pipe(stylus())
     .pipe(pipeMarker(() => { console.log('\r\n       CSS PROPERTY       |      SOURCE     |                        NOT SUPPORTED                         |           PARTIAL SUPPORT           '.black.bgBlue); }))
     .pipe(postcss(config.postcss))
+    .pipe(concat('style.css'))
     .pipe(dest(path.dev.css.dir));
 
   done();

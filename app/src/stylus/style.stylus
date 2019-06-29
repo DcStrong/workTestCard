@@ -32,6 +32,7 @@ button
 /* #region header */
 
 .header
+  position relative
   z-index: 1000
 
 /* #region header__contact */
@@ -183,7 +184,7 @@ button
   margin: 0 auto
   background-color: transparent
   border: 0.2rem solid $secondary
-  color: #fff
+  color: $text-accent
   font-size: 1.6rem
   border-radius: 0.5rem
   margin-top: 13rem
