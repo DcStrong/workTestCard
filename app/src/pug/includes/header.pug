@@ -3,7 +3,7 @@ html(lang='ru')
   head
     title Ubk-Rent
     meta(charset='utf-8')
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1")
     link(rel='stylesheet' type='text/css' href='../css/bootstrap.min.css')
     link(rel='stylesheet' href='/css/style.css')
     link(rel='stylesheet' href='../assets/fonts/forum/forum.css')
@@ -11,11 +11,29 @@ html(lang='ru')
     link(rel="stylesheet" href='../css/datepicker.min.css')
 
   body
+
+    nav#header__nav-mobile.header__nav-mobile
+      a.header__menu-mobile-toggler--close(href="#")
+
+      ul.header__menu-mobile
+        li.menu-item
+          a(href="#") Главная
+        li.menu-item
+          a(href="#") Аппартаменты
+        li.menu-item
+          a(href="#") Дома и виллы
+        li.menu-item
+          a(href="#") Клубная карта
+        li.menu-item
+          a(href="#") FAQ
+        li.menu-item
+          a(href="#") Контакты
+
     header.header.container
 
       div.header__nav-global.row.no-gutters
         div.col-4.col-md-3
-          a.header__menu-toggler--open(href="#header__nav")
+          a.header__menu-mobile-toggler--open(href="#header__nav-mobile")
 
         div.col-4.col-md-6
           a.header__logo(href='#')
@@ -25,9 +43,7 @@ html(lang='ru')
           a.header__phone(href='tel:88612387950') 8 861 238 79 50
           button.header__callme заказать звонок
 
-      nav#header__nav.header__nav
-        a.header__menu-toggler--close(href="#")
-
+      nav.header__nav
         ul.header__menu
           li.menu-item
             a(href="#") Главная

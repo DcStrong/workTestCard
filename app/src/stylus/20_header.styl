@@ -5,10 +5,33 @@
 header.header
   position relative
   z-index 1000
+  @media screen and (max-width 768px)
+    max-width 100%
+
+.header__nav
+  @media screen and (max-width 768px)
+    display none
 
 .header__nav-global
   padding 1rem 0 0
   align-items center
+
+.header__nav-mobile
+  display none
+  position absolute
+  width 30rem
+  height 100%
+  top 0
+  left -100%
+  background-color $primary
+  z-index 1001
+  transition all 300ms ease-in-out
+  &:target
+    left 0
+  @media screen and (max-width 768px)
+    display block
+  @media screen and (max-width 320px)
+    width 100%
 
 .header__logo
   display flex
@@ -17,6 +40,11 @@ header.header
   height 13rem
   flex-direction column
   justify-content center
+  @media screen and (max-width 768px)
+    width 15rem
+  @media screen and (max-width 480px)
+    width 10rem
+    height 8rem
 
 .header__logo img
   display block
@@ -33,7 +61,6 @@ header.header
   color $text-accent
   @media screen and (max-width 480px)
     font-size: 1.2rem
-
   @media screen and (max-width 320px)
     font-size: 1rem
 
@@ -47,7 +74,6 @@ header.header
   background-color transparent
   @media screen and (max-width 480px)
     font-size: 1.2rem
-
   @media screen and (max-width 320px)
     font-size: 1rem
 
@@ -60,14 +86,33 @@ header.header
   justify-content space-between
   list-style none
 
-.header__menu-toggler--open
+.header__menu-mobile
+  padding 0
+  margin-top 0
+  padding-top 4rem
+  height 100%
+
+.header__menu-mobile-toggler--open
   display block
   width 3rem
   height 2rem
   background-image url(../assets/icons/open.png)
   background-size cover
+  @media screen and (min-width 769px)
+    display none
 
-.header__menu .menu-item a
+.header__menu-mobile-toggler--close
+  position absolute
+  width 2.2rem
+  height 2.2rem
+  top 0
+  right 0
+  background-image url(../assets/icons/close.png)
+  background-size cover
+  transform: translate(-50%, 50%);
+
+.header__menu .menu-item a,
+.header__nav-mobile .menu-item a
   display block
   color $text-accent
   text-decoration none
@@ -76,58 +121,8 @@ header.header
     color $secondary
     text-decoration underline
 
-/* #media query */
-
-@media screen and (max-width 768px)
-  header.header
-    max-width 100%
-
-  .header__logo
-     width 15rem
-
-  .header__nav
-    position absolute
-    width 30rem
-    height 100vh
-    top 0
-    left -100%
-    background-color $primary
-    z-index 1
-    transition all 300ms ease-in-out
-
-  .header__nav:target
-    left 0
-
-  .header__nav .header__menu
-    display block
-    margin-top 0
-    padding-top 4rem
-    height 100%
-
-  .header__menu .menu-item a
+.header__nav-mobile .menu-item a
+  @media screen and (max-width 768px)
     padding: 1.5rem 3rem
-
-  .header__menu-toggler--close
-    position absolute
-    width 2.2rem
-    height 2.2rem
-    top 0
-    right 0
-    background-image url(../assets/icons/close.png)
-    background-size cover
-    transform: translate(-50%, 50%);
-
-@media screen and (max-width 480px)
-  .header__logo
-     width 10rem
-     height 8rem
-
-@media screen and (max-width 320px)
-  .header__nav
-    width 100%
-
-@media screen and (min-width 769px)
-  .header__menu-toggler--open
-    display none
 
 /* #endregion */
