@@ -5,24 +5,31 @@ script(src="../js/script.js")
 
 if page != 'index' && page != 'taxonomy'
 
-  footer.footer.container
-    .col-4
-      #{page}
-    .col-4
-      div.contacts
-        p р.Крым, г.Ялта, ул.Свердлова, д.3
-        p
-          a.phone(href='tel:+79789890777') +7 (978) 989-07-77
-        p
-          a.mail(href='mailto:info@ubk-rent.ru') info@ubk-rent.ru
+  footer.footer
+    div.container
+      div.footer__main.row
+        div.col-3.footer__logo-wrapper
+          a.site-logo(href='#')
+            img.custom-logo(src='../assets/img/Logo_Ubkrent_font_co.png' alt='ubk-rent')
 
-    .col-4
-      ul
-        li
-          a(href='#') Правила бронирования
-        li
-          a(href='#') Реквизиты
-        li
-          a(href='#') Реквизиты
-        li
-          a(href='#') Реквизиты
+        div.col-3.footer__contacts
+          p р.Крым, г.Ялта, ул.Свердлова, д.3
+          p
+            a.phone(href='tel:+79789890777') +7 (978) 989-07-77
+          p
+            a.email(href='mailto:info@ubk-rent.ru') info@ubk-rent.ru
+
+        div.col-6.footer__nav
+          // container => false
+          ul.footer__menu
+            li.menu-item
+              a(href='#') Правила бронирования
+            li.menu-item
+              a(href='#') Соглашение об обработке персональных данных
+            li.menu-item
+              a(href='#') Реквизиты
+            li.menu-item
+              a(href='#') Работаем по 54-ФЗ через Яндекс.Кассу
+
+</body>
+</html>

@@ -8,6 +8,30 @@ header.header
   @media screen and (max-width 768px)
     max-width 100%
 
+header.header-mobile
+  position absolute
+  display none
+  top 0
+  left 0
+  width 30rem
+  height 100%
+  animation slide-right .3s ease-in-out
+  transition all 300ms ease-in-out
+  z-index 1001
+  &:target
+    display block
+  @media screen and (max-width 320px)
+    width 100%
+
+@keyframes slide-right {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
 .header__nav
   @media screen and (max-width 768px)
     display none
@@ -17,23 +41,10 @@ header.header
   align-items center
 
 .header__nav-mobile
-  display none
-  position absolute
-  width 30rem
   height 100%
-  top 0
-  left -100%
-  background-color $primary
-  z-index 1001
-  transition all 300ms ease-in-out
-  &:target
-    left 0
-  @media screen and (max-width 768px)
-    display block
-  @media screen and (max-width 320px)
-    width 100%
+  background-color: #141448;
 
-.header__logo
+.header .site-logo
   display flex
   margin 0 auto
   width 20rem
@@ -46,11 +57,12 @@ header.header
     width 10rem
     height 8rem
 
-.header__logo img
+.header .site-logo img
   display block
   width 100%
   height auto
   object-fit cover
+  font-family 'object-fit: contain;'
 
 .header__contacts
   text-align right

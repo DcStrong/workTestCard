@@ -18,36 +18,38 @@
   left 0
   width 100%
   height 100%
-  &:before
-    content ''
-    position absolute
-    top 0
-    left 0
-    right 0
-    height 10rem
-    background-image: url(../assets/img/sep-top.png)
-    background-size 100% 100%
-    background-repeat no-repeat
-    background-position 100% 100%
-    z-index 2
+  &:before,
   &:after
     content ''
     position absolute
-    bottom 0
+    height 10rem
     left 0
     right 0
-    height 10rem
-    background-image url(../assets/img/sep-bot.png)
     background-size 100% 100%
     background-repeat no-repeat
-    background-position 100% 100%
+    background-position center center
     z-index 2
+  &:before
+    top 0
+    background-image url(../assets/img/sep-top.svg)
+  &:after
+    bottom 0
+    background-image url(../assets/img/sep-bot.svg)
+  @media screen and (max-width 768px)
+    &:before,
+    &:after
+      height 5rem
+  @media screen and (max-width 480px)
+    &:before,
+    &:after
+      height 3rem
 
 .page-club .section__img
   position relative
   width 100%
   height 100%
   object-fit cover
+  font-family 'object-fit: contain;'
   z-index 0
 
 .page-club .section__img-overlay
@@ -66,23 +68,37 @@
   margin 0
   color $text-accent
   font-size 5rem
-  font-family Forum
+  font-family 'forum'
   letter-spacing 1rem
   text-transform uppercase
   z-index 3
   &:before
     content '♦  '
     color $secondary
-    // background-image url("dataimage/svg+xmlutf8,<svg xmlns='http//www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='#eb6856' d='M0 0h20v20H0z'/></svg>")
   &:after
     content '  ♦'
     color $secondary
+  @media screen and (max-width 768px)
+    padding 20rem 0
+    font-size 4rem
+    &:before
+      content unset
+    &:after
+      content unset
+  @media screen and (max-width 480px)
+    padding 15rem 0
+    font-size 2.5rem
+    letter-spacing .5rem
 
 .page-club .section__body
-  padding 5rem 0
+  padding-top 5rem
+  padding-bottom 5rem
+
+.page-club .section__description
+  margin-top 5rem
+  text-align justify
 
 .page-club .section__description p
-  margin 0
   font-size 1.6rem
 
 /* #endregion */
@@ -96,23 +112,41 @@
 .page-club .section.club .section__header
   position static
   padding 15rem 0 30rem
+  @media screen and (max-width 768px)
+    padding 10rem 0 20rem
+  @media screen and (max-width 480px)
+    padding 5rem 0 15rem
 
 .page-club .section.club .section__title
   padding 0
 
 .page-club .section.club .section__img-wrapper
-  height 71.4rem
+  height 72.4rem
   &:before
     content none
+  @media screen and (max-width 768px)
+    height 48.8rem
+  @media screen and (max-width 480px)
+    height 32.6rem;
 
 .page-club .card__photo-wrapper
-  width 30rem
-  height 30rem
   margin 0 auto
+  max-width 35rem
+  height 25rem
+  width 100%
+  @media screen and (max-width 480px)
+    max-width 30rem
+    height 20rem
+    width 100%
 
 .page-club .card__photo
   width 100%
   height 100%
+  box-shadow 1px 1px 3px rgba(0,0,0, .3)
+
+.page-club .section.club .section__body
+  @media screen and (max-width 480px)
+    padding-top 0
 
 /* #endregion */
 
@@ -126,42 +160,50 @@
 
 .page-club .partners__control
   position absolute
-  margin: 0
-  padding: 0
-  width: 6rem
-  height 6rem
+  margin 0
+  padding 0
+  width 5rem
+  height 5rem
   top 50%
-  border: none
-  background-position: center center
-  background-repeat: no-repeat
-  background-size: 100% 100%
-  background-color: transparent
+  border none
+  background-position center center
+  background-repeat no-repeat
+  background-size 100% 100%
+  background-color transparent
   transform translateY(-50%)
   &.left
     left 0
     background-image url(../assets/icons/left.svg)
-    transform translateX(-50%)
   &.right
     right 0
     background-image url(../assets/icons/right.svg)
-    transform translateX(50%)
+  @media screen and (max-width 480px)
+    width 4rem
+    height 4rem
 
 .page-club .partners__list
   display flex
-  flex-flow row wrap
-  // margin 0 auto
   padding 0
-  // max-width 110rem
+  flex-flow row wrap
   list-style none
   justify-content space-evenly
 
 .page-club .partners__item
   display none
   position relative
+  margin 0 3rem
   padding 1.5rem
   height 30rem
   flex 0 0 30rem
   animation showUp .5s linear
+  @media screen and (max-width 768px)
+    height 20rem
+    flex-basis 20rem
+    margin 0 2rem
+  @media screen and (max-width 480px)
+    height 15rem
+    flex-basis 15rem
+    margin 0 2rem
 
 @keyframes showUp
   from
@@ -170,23 +212,32 @@
     opacity 1
 
 .page-club .partners__item[data-visibility='1']
-  display block
+  display flex
 
 .page-club .partners__img
+  margin auto
   width 100%
-  height 100%
+  height auto
   object-fit cover
-  background-color #888
+  font-family 'object-fit: contain;'
+  // background-color #888
 
 .page-club .partners__discount
   position absolute
-  top 1.5rem
-  right 1.5rem
+  display block
   width 5rem
   height 5rem
-  background-image url(../assets/icons/discount.svg)
+  top 1.5rem
+  right 1.5rem
+  line-height 5rem
+  text-align center
+  color $text-accent
+  font-size 1.3rem
+  font-weight bold
+  background-image url(../assets/icons/discount.png)
   background-position center center
   background-repeat no-repeat
+  background-size cover
 
 /* #endregion */
 
@@ -203,16 +254,24 @@
   justify-content space-evenly
 
 .page-club .hotels__item
+  display flex
   padding 1.5rem
   height 30rem
   flex 0 0 30rem
+  align-items center
+  @media screen and (max-width 768px)
+    height 20rem
+    flex-basis 20rem
+  @media screen and (max-width 480px)
+    height 15rem
+    flex-basis 15rem
 
 .page-club .hotels__img
   width 100%
   height auto
 
 .page-club .hotels__instruction-title
-  padding 5rem 0 1rem
+  margin-bottom 1rem
   font-size 1.6rem
 
 .page-club .hotels__instruction-title span
@@ -234,6 +293,12 @@
   font-size 1.6rem
   color $text-accent
   background-color $secondary
-  font-family 'Gotham Pro'
+  font-family 'Gotham Pro', "Open Sans", sans
 
 /* #endregion */
+
+/*
+@media screen and (max-width 768px)
+@media screen and (max-width 480px)
+@media screen and (max-width 320px)
+  */

@@ -1,3 +1,5 @@
+@require 'colors.styl'
+
 /* #region globals */
 
 html
@@ -9,12 +11,50 @@ body
   margin 0
   width 100%
   height 100%
-  font-family "Gotham Pro", "Open Sans"
+  font-family "Gotham Pro", "Open Sans", sans
 
 *
   box-sizing border-box
 
-button
-  font-family "Gotham Pro"
+.page
+  height 100%
+
+.page .header
+  padding-top 10rem
+  height 35rem
+
+.page .section__img-wrapper
+  position absolute
+  top 0
+  left 0
+  width 100%
+  z-index -1
+
+.page .section__img
+  position relative
+  width 100%
+  height 56.4rem
+  object-fit cover
+  font-family 'object-fit: contain;'
+
+.page .section__img-overlay
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  background-color $primary
+  opacity .4
+  z-index 0
+
+.page .section__title
+  margin 0
+  font-size 4.3rem
+  text-align center
+  color $text-accent
+  font-family 'forum'
+  letter-spacing 6px
+  line-height 6rem
+  text-transform uppercase
 
 /* #endregion */

@@ -129,6 +129,11 @@ let ext = (() => {
       css: {
         file: 'node_modules/air-datepicker/dist/css/datepicker.min.css'
       }
+    },
+    objectfitimg: {
+      js: {
+        file: 'node_modules/object-fit-images/dist/ofi.min.js'
+      }
     }
   };
 })();
