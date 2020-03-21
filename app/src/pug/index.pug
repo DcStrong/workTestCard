@@ -1,32 +1,36 @@
-include includes/header.pug
+html(lang='ru')
+  head
+    title TestQuest
+    meta(charset='utf-8')
+    meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1")
+    link(rel='stylesheet' href='/css/style.css')
+    link(rel='stylesheet' href='/css/jquery.autocomplete.css')
+    link(rel='stylesheet' href='../assets/fonts/stylesheet.css')
 
-div.page-main
+  body
+    .container
+      div.a
+        
 
-  div.container
+      .card__item
+        .card__header
+          .card__logo(data-target="search" data-is-hidden="1" data-animate="1")
+            .logo-hidden
+              input.card__search-input(type="text" placeholder="Search field location" id="search")
+              div.logo
+                include ../icons/Shape.svg
+            img.logo-show(src="../assets/icons/Logo.png")
+          .button__container
+            div.fa-search.card__button(data-control="search" data-active="1")
+              include ../icons/Union.svg
+            .delimiter
+            div.fa-angle-up.card__button(data-control="content" data-active="1")
+              include ../icons/Union (1).svg
+        .card__body(data-target="content" data-is-hidden="1" data-animate="1")
+          h3.card__title Get Map for In Season Nitrogen Application  in 10 seconds
+          p.card__description Find your field on the map or create a new border. Then click on the field and get the file for variable rate application for the onboard computer of your machinery.
+          a.card__link(href="#") How it works
 
-    h1.title
-      | Аренда недвижимости
-      br
-      | премиум класса в Ялте
-
-    div.realty
-      a.realty__link(href='#') Апартаменты
-      a.realty__link(href='#') Дома и виллы
-
-    include components/individual-pick.pug
-
-  div.slides-wrapper
-    div.slides__controls
-      button.slides__prev(data-control="-1")
-      button.slides__next(data-control="1")
-    div.slides
-      div(data-simple-slider)
-        .slides__slide
-          img.slides__img(src="../assets/img/front-bg.jpg" alt="Ubk-Rent")
-          h4.slides__title Описание_1
-        .slides__slide
-          img.slides__img(src="../assets/img/bg_ere.jpg" alt="Ubk-Rent")
-          h4.slides__title Описание_2
-
-- var page = 'index'
-include includes/footer.pug
+    script(src="../js/jquery.min.js")
+    script(src="../js/jquery.autocomplete.js")
+    script(src="../js/script.js")

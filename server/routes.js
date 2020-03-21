@@ -107,32 +107,17 @@ let dist = (() => {
  */
 let ext = (() => {
   return {
-    bootstrap: {
-      css: {
-        file: 'node_modules/bootstrap/dist/css/bootstrap.min.css'
-      }
-    },
     jquery: {
       js: {
         file: 'node_modules/jquery/dist/jquery.min.js'
       }
     },
-    simpleslider: {
+    autocomplite: {
       js: {
-        file: 'node_modules/simple-slider/dist/simpleslider.min.js'
-      }
-    },
-    datepicker: {
-      js: {
-        file: 'node_modules/air-datepicker/dist/js/datepicker.min.js'
+        file: 'node_modules/jquery-autocomplete/jquery.autocomplete.js'
       },
       css: {
-        file: 'node_modules/air-datepicker/dist/css/datepicker.min.css'
-      }
-    },
-    objectfitimg: {
-      js: {
-        file: 'node_modules/object-fit-images/dist/ofi.min.js'
+        file: 'node_modules/jquery-autocomplete/jquery.autocomplete.css'
       }
     }
   };

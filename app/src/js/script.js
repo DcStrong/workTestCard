@@ -1,91 +1,64 @@
-;($ => {
+; ($ => {
 
   /**
-   * main page slider
+   * card control
    */
-  ;(() => {
-    if ($('.page-main [data-simple-slider]').length === 0) {
-      return;
-    }
+  ; (() => {
 
-    let slider = simpleslider.getSlider({
-      prop: 'opacity',
-      unit: '',
-      init: 0,
-      show: 1,
-      end: 0,
-      duration: 1,
-      delay: 5
-    });
+    let inputSearch = document.querySelector('.card__search-input');
 
-    $('.slides__prev').click(() => {
-      slider.prev(); });
+    let button = document.querySelectorAll('.card__button').forEach(function (e) {
 
-    $('.slides__next').click(() => {
-      slider.next(); });
-  })();
+      e.addEventListener('click', function (e) {
+        let button = e.currentTarget;
+        let attribute = e.currentTarget.getAttribute('data-control');
 
-  /**
-   * popup control
-   */
-  ;(() => {
-    $('[data-popup-toggler]').click(function() {
-      let target = $(this).data('popup-toggler')
-      $('[data-popup="' + target + '"]').toggleClass('visible');
-    });
-  })();
+        let target = document.querySelector('[data-target="' + attribute + '"]');
 
-  /**
-   * page club card
-   */
-  ;(function () {
-    if ($('.page-club').length === 0) {
-      return;
-    }
-    /**
-     *  TODO  FIX :
-     */
-    function ladingPartnersListSwitcher() {
-      let cursor = 6;
-      let items = $('.partners__item');
 
-      if (!items.length) {
-        return;
-      }
+        let isHidden = parseInt(target.getAttribute('data-is-hidden'), 10);
+        target.setAttribute('data-animate', ~~!isHidden);
 
-      function switcher(cursor) {
-        items.attr('data-visibility', 0);
+        setTimeout(() => {
+          target.setAttribute('data-is-hidden', ~~!isHidden)
+          target.setAttribute('data-animate', ~~!isHidden);
+        }, 500);
 
-        for(let i = cursor - 6; i < cursor; i++) {
-          $(items[i]).attr('data-visibility', 1);
-        }
-      }
-
-      switcher(cursor);
-
-      $('.partners__control').click(function() {
-        let intent = $(this).data('control');
-
-        if (intent == 1) {
-          if (cursor >= items.length) {
-            return;
-          }
-
-          cursor += 6;
-        } else if (intent == -1) {
-          cursor -= 6;
-
-          if (cursor <= 0) {
-            cursor += 6;
-            return;
-          }
-        }
-
-        switcher(cursor);
+        button.setAttribute('data-active', ~~!isHidden);
       });
-    }
+    });
 
-    ladingPartnersListSwitcher();
   })();
+
+
+  var states = [
+    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+    'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 
+    'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
+    'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 
+    'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 
+    'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+    'New Jersey', 'New Mexico', 'New York', 'North Carolina', 
+    'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 
+    'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 
+    'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 
+    'West Virginia', 'Wisconsin', 'Wyoming'
+  ];
+
+  $(function() {
+    $("#search").autocomplete({
+      source:[states],
+      dropdownStyle:{
+        position: 'absolute',
+        left: '-38px',
+        width: '335px',
+        top: '30px',
+        fontFamily: 'Open Sans',
+        padding: '0 45px',
+        boxSizing: 'border-box',
+        border: 'none'},
+    }); 
+  });
 
 })(jQuery);
+

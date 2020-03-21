@@ -122,19 +122,12 @@ task(tasks.clean, done => {
  * TODO  FIX :
  */
 task(tasks.init, done => {
-  src(path.ext.datepicker.css.file).pipe(dest(path.dev.css.dir));
-  src(path.ext.bootstrap.css.file).pipe(dest(path.dev.css.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dev.js.dir));
-  src(path.ext.simpleslider.js.file).pipe(dest(path.dev.js.dir));
-  src(path.ext.datepicker.js.file).pipe(dest(path.dev.js.dir));
-  src(path.ext.objectfitimg.js.file).pipe(dest(path.dev.js.dir));
 
-  src(path.ext.datepicker.css.file).pipe(dest(path.dist.css.dir));
-  src(path.ext.bootstrap.css.file).pipe(dest(path.dist.css.dir));
+
+  src(path.ext.autocomplite.css.file).pipe(dest(path.dist.css.dir));
   src(path.ext.jquery.js.file).pipe(dest(path.dist.js.dir));
-  src(path.ext.simpleslider.js.file).pipe(dest(path.dist.js.dir));
-  src(path.ext.datepicker.js.file).pipe(dest(path.dist.js.dir));
-  src(path.ext.objectfitimg.js.file).pipe(dest(path.dist.js.dir));
+  src(path.ext.autocomplite.js.file).pipe(dest(path.dist.js.dir));
 
   done();
 });
@@ -272,11 +265,7 @@ task(tasks.babel, done => {
  * TODO  FIX : exclude
  */
 task(tasks.dist, done => {
-  src([`!${path.dev.css.dir}/bootstrap.css`, path.dev.css.file])
-    .pipe(concat('style.css'))
-    .pipe(dest(path.dist.css.dir));
-
-  src([`!${path.dev.js.dir}/bootstrap.min.js`, `!${path.dev.js.dir}/jquery.min.js`, path.dev.js.file])
+  src([`!${path.dev.js.dir}/jquery.autocomplete.js`, `!${path.dev.js.dir}/jquery.min.js`, path.dev.js.file])
     .pipe(concat('script.js'))
     .pipe(dest(path.dist.js.dir));
 
