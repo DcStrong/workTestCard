@@ -1,35 +1,24 @@
 ; ($ => {
-
   /**
    * card control
    */
   ; (() => {
-
-    let inputSearch = document.querySelector('.card__search-input');
-
-    let button = document.querySelectorAll('.card__button').forEach(function (e) {
-
-      e.addEventListener('click', function (e) {
+    document.querySelectorAll('.card__control-icons').forEach( e => {
+      e.addEventListener('click', e => {
         let button = e.currentTarget;
-        let attribute = e.currentTarget.getAttribute('data-control');
+        let control = button.getAttribute('data-control-target');
 
-        let target = document.querySelector('[data-target="' + attribute + '"]');
+        document.querySelectorAll(`[data-target=${control}]`).forEach( e => {
 
+          let isHidden = parseInt(e.getAttribute('data-hidden'), 10);
+          e.setAttribute('data-hidden', ~~!isHidden);
+          button.setAttribute('data-active', ~~!isHidden);
 
-        let isHidden = parseInt(target.getAttribute('data-is-hidden'), 10);
-        target.setAttribute('data-animate', ~~!isHidden);
+        })
 
-        setTimeout(() => {
-          target.setAttribute('data-is-hidden', ~~!isHidden)
-          target.setAttribute('data-animate', ~~!isHidden);
-        }, 500);
-
-        button.setAttribute('data-active', ~~!isHidden);
-      });
-    });
-
+      })
+    })
   })();
-
 
   var states = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
@@ -52,12 +41,13 @@
         position: 'absolute',
         left: '-38px',
         width: '335px',
+        marginLeft: 0,
         top: '30px',
         fontFamily: 'Open Sans',
         padding: '0 45px',
         boxSizing: 'border-box',
         border: 'none'},
-    }); 
+    });
   });
 
 })(jQuery);
